@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "cursed-sword-tracker",
+    "prod": "cursed-sword-tracker"
+  }
+}
