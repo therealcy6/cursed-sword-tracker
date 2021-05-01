@@ -1,34 +1,27 @@
 import React from "react";
 
-export default class CountDownTimer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {until: props.until, offset: props.offset, name: props.name};    
+import { useSelector } from 'react-redux'
+import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+
+export default function CountDownTimer(props) {
+  useFirebaseConnect([`chronos`])
+  const chronos = useSelector((state) => state.firebase.data["chronos"])
+
+  if (!isLoaded(chronos)) {
+    return <div>Loading...</div>
   }
 
-  componentDidMount() {
-    this.tick()
-    let timer = setInterval(this.tick.bind(this), 1000);
-    this.setState({timer});
+  if (isEmpty(chronos)) {
+    return <div>Observed Data Is Empty</div>
   }
 
-  componentWillUnmount() {
-    this.clearInterval(this.state.timer);
-  }
+  var spawnTimestamp = chronos[props.index];
+  var spawnSecondsFromNow = Math.floor((spawnTimestamp - props.now)/1000);
 
-  tick() {
-    const until = this.state.until;
-    this.setState({
-      secondsUntilSpawn: Math.floor((until - Date.now() - this.state.offset)/1000)
-    });
-  }
-
-  render() {    
-    return (
-      <div>
-          <p>name is {this.state.name}</p>
-          <p>spawntime is {this.state.secondsUntilSpawn}</p>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <p>{props.index} will spawn at timestamp: {spawnTimestamp}</p>
+      <p>{props.index} will spawn at in {spawnSecondsFromNow} seconds</p>
+    </div>
+  )
 }

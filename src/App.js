@@ -41,25 +41,12 @@ const rrfProps = {
 };
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {offset: 0};    
-  }
-
-  componentDidMount() {
-    var offsetRef = firebase.database().ref(".info/serverTimeOffset");
-    offsetRef.on("value", (snap) => {
-      this.setState({offset: snap.val()});
-    });
-  } 
-
   render() {
-    const offset = this.state.offset;
     return (
       <div className="App">
         <Provider store={store}>
           <ReactReduxFirebaseProvider {...rrfProps}>
-            <Field offset={offset}></Field>
+            <Field></Field>
           </ReactReduxFirebaseProvider>
         </Provider>
       </div>
