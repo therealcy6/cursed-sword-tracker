@@ -15,13 +15,20 @@ export default function CountDownTimer(props) {
     return <div>Observed Data Is Empty</div>
   }
 
-  var spawnTimestamp = chronos[props.index];
+  var spawnTimestamp = chronos[props.index] + props.respawn * 1000;
   var spawnSecondsFromNow = Math.floor((spawnTimestamp - props.now)/1000);
 
+  if (spawnSecondsFromNow > 0) {
+    return (
+      <div>
+          <p>{props.name} will spawn at in {spawnSecondsFromNow} seconds</p>
+      </div>
+    );
+  } 
   return (
     <div>
-      <p>{props.index} will spawn at timestamp: {spawnTimestamp}</p>
-      <p>{props.index} will spawn at in {spawnSecondsFromNow} seconds</p>
+        <p>{props.name} is up!</p>
+        <button onClick={() => props.kill(props.index)}>Kill</button>
     </div>
-  )
+  );
 }
