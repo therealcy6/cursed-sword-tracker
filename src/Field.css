@@ -1,5 +1,5 @@
 .field {
-    width: 800px;
+    width: 1000px;
     background-color: #efefef;
     border-color: #232323;
     border-style:solid;
@@ -7,17 +7,15 @@
     margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 0px;
 }
 
 .akamanah {
-    background-color: #8c4f8c;
-    margin: 20px 20px 20px 0px;
+    background-color: #8e67a7;
 }
 
 .zariche {
-    background-color: #a33f3f;    
-    margin: 20px 0px 20px 20px;
+    background-color: #ff6c6c; 
 }
 
 .inner {

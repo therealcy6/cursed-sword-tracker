@@ -21,13 +21,13 @@ export default function CountDownTimer(props) {
   if (spawnSecondsFromNow > 0) {
     return (
       <div>
-          <p>{props.name} will spawn at in {spawnSecondsFromNow} seconds</p>
+          <p>{props.name} in {spawnSecondsFromNow}s</p>
       </div>
     );
   } 
   return (
     <div>
-        <p>{props.name} is up!</p>
+        <p>{props.name}</p>
         <button onClick={() => props.kill(props.index)}>Kill</button>
     </div>
   );
