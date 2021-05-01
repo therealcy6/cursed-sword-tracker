@@ -39,26 +39,30 @@ class Field extends React.Component {
         return (
             <div className="field">
                 <div className="zariche">
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 1" index="zarpriest1"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 2" index="zarpriest2"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="360" name="Zariche Chest" index="zarchest"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 3" index="zarpriest3"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 4" index="zarpriest4"></CountDownTimer>
+                    <div className="inner">
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 1" index="zarpriest1"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 2" index="zarpriest2"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="360" name="Zariche Chest" index="zarchest"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 3" index="zarpriest3"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Zariche Priest 4" index="zarpriest4"></CountDownTimer>
+                    </div>
                 </div>
-                <div className="akamanah">                    
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 1" index="akapriest1"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 2" index="akapriest2"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="360" name="Akamanah Chest" index="akachest"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 3" index="akapriest3"></CountDownTimer>
-                    <div></div>
-                    <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 4" index="akapriest4"></CountDownTimer>
+                <div className="akamanah">
+                    <div className="inner">                    
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 1" index="akapriest1"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 2" index="akapriest2"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="360" name="Akamanah Chest" index="akachest"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 3" index="akapriest3"></CountDownTimer>
+                        <div></div>
+                        <CountDownTimer now={this.state.now} kill={this.kill} respawn="480" name="Akamanah Priest 4" index="akapriest4"></CountDownTimer>
+                    </div>
                 </div>
             </div>
         )

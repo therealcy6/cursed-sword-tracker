@@ -12,14 +12,15 @@
 .akamanah {
     background-color: #8c4f8c;
     margin: 20px 20px 20px 0px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0px;
 }
 
 .zariche {
     background-color: #a33f3f;    
     margin: 20px 0px 20px 20px;
+}
+
+.inner {
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0px;
