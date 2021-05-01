@@ -1,5 +1,5 @@
 import './App.css';
-import CountDownTimer from './Timer.js';
+import Field from './Field.js';
 import React from 'react'
 import { Provider } from 'react-redux'
 import firebase from 'firebase/app'
@@ -40,16 +40,30 @@ const rrfProps = {
   dispatch: store.dispatch
 };
 
-function App() {
-  return (
-    <div className="App">
-      <Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>
-          <CountDownTimer></CountDownTimer>
-        </ReactReduxFirebaseProvider>
-      </Provider>
-    </div>
-  );
-};
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {offset: 0};    
+  }
 
+  componentDidMount() {
+    var offsetRef = firebase.database().ref(".info/serverTimeOffset");
+    offsetRef.on("value", (snap) => {
+      this.setState({offset: snap.val()});
+    });
+  } 
+
+  render() {
+    const offset = this.state.offset;
+    return (
+      <div className="App">
+        <Provider store={store}>
+          <ReactReduxFirebaseProvider {...rrfProps}>
+            <Field offset={offset}></Field>
+          </ReactReduxFirebaseProvider>
+        </Provider>
+      </div>
+    );
+  }
+}
 export default App;
