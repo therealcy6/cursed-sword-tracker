@@ -4,7 +4,7 @@ import './Field.css';
 import firebase from 'firebase/app'
 import CountDownTimer from './CountdownTimer.js'
 
-const chestRespawn = 20;
+const chestRespawn = 360;
 const priestRespawn = 480;
 
 class Field extends React.Component {
