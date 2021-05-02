@@ -23,7 +23,7 @@ class Field extends React.Component {
         });
         
         this.tick()
-        this.setState({timer: setInterval(this.tick.bind(this), 1000)});
+        this.setState({timer: setInterval(this.tick.bind(this), 100)});
     }
 
     componentWillUnmount() {
@@ -61,14 +61,10 @@ class Field extends React.Component {
 
         var now = moment(this.state.now);
 
-        now.add(24, "hours").add(10, "hours").add(-7, "minutes");
-
         var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
         var swordsEnd = moment(now).utc().hour(2).minute(0).second(0).millisecond(0);
-
         
-
         // Swords are active Tuesday - Friday 1:30am-2am UTC.
         if (now.utc().day() <= 1 || now.utc().day() >= 5 || !now.isBetween(swordsBegin, swordsEnd)) {
             active = false;
@@ -83,7 +79,7 @@ class Field extends React.Component {
                 }
                 {active &&
                     <div className="active overlay">
-                        <div className={`active box ${Math.floor((swordsEnd.diff(now))/1000)<=15?"soon":""}`}>
+                        <div className={`active box ${Math.floor((swordsEnd.diff(now))/1000)<30?"soon":""}`}>
                             {now.to(swordsEnd)}
                         </div>
                     </div>

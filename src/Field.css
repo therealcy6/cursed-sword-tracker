@@ -26,16 +26,17 @@
 }
 
 .inactive {    
-    color: white;    
+    color: white;
     background-color: rgba(41, 41, 41, 0.87);
+    padding-top: 240px;
 }
 
 .active {
     color: white;
+    padding-top: 220px;
 }
 
-.overlay {
-    padding-top: 220px;
+.overlay {    
     position: fixed;
     top: 0px; 
     left: 0px;
