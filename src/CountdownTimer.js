@@ -21,7 +21,7 @@ export default function CountDownTimer(props) {
 
   if (spawnSecondsFromNow > 0) {
     return (
-      <div className="CountdownTimer">
+      <div className={`CountdownTimer ${spawnSecondsFromNow<=15?"soon":""}`}>
         <span>
           {props.name} in {spawnSecondsFromNow}s
         </span>

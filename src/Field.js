@@ -4,7 +4,7 @@ import './Field.css';
 import firebase from 'firebase/app'
 import CountDownTimer from './CountdownTimer.js'
 
-const chestRespawn = 360;
+const chestRespawn = 20;
 const priestRespawn = 480;
 
 class Field extends React.Component {
@@ -17,7 +17,6 @@ class Field extends React.Component {
     componentDidMount() {
         var offsetRef = firebase.database().ref(".info/serverTimeOffset");
         offsetRef.on("value", (snap) => {
-            console.log(snap.val());
             this.setState({offset: snap.val(), now: Date.now() + snap.val()});
         });
         
