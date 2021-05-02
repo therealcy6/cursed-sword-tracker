@@ -8,6 +8,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0px;
+    position: relative;
 }
 
 .akamanah {
@@ -28,12 +29,12 @@
 .inactive {    
     color: white;
     background-color: rgba(41, 41, 41, 0.87);
-    padding-top: 240px;
-    position: fixed;
-    top: 0px; 
+    position: absolute;
+    top: 0px;
+    padding-top: 160px;
     left: 0px;
     width: 100%;
-    height: 100%;
+    height: 182px;
 }
 
 .active {

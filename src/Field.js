@@ -61,7 +61,7 @@ class Field extends React.Component {
 
         var now = moment(this.state.now);
 
-        //now.add(24, "hours").add(5, "hours").add(40, "minutes");
+        now.add(24, "hours").add(5, "hours").add(20, "minutes");
 
         var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
