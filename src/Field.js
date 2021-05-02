@@ -7,18 +7,19 @@ import CountDownTimer from './CountdownTimer.js'
 class Field extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {now: Date.now()}
+        this.state = {now: Date.now(), offset: 0};
         this.kill = this.kill.bind(this);
     }
 
     componentDidMount() {
         var offsetRef = firebase.database().ref(".info/serverTimeOffset");
         offsetRef.on("value", (snap) => {
-            this.setState({offset: snap.val(), now: Date.now() - snap.val()});
+            console.log(snap.val());
+            this.setState({offset: snap.val(), now: Date.now() + snap.val()});
         });
         
         this.tick()
-        this.setState({timer: setInterval(this.tick.bind(this), 1000)});
+        this.setState({timer: setInterval(this.tick.bind(this), 100)});
     }
 
     componentWillUnmount() {
@@ -26,7 +27,7 @@ class Field extends React.Component {
     }
     
     tick() {
-        this.setState({now: Date.now() - this.state.offset});
+        this.setState({now: Date.now() + this.state.offset});
     }
 
     kill(index) {
