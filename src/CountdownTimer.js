@@ -1,4 +1,5 @@
 import React from "react";
+import './CountdownTimer.css';
 
 import { useSelector } from 'react-redux'
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
@@ -20,15 +21,19 @@ export default function CountDownTimer(props) {
 
   if (spawnSecondsFromNow > 0) {
     return (
-      <div>
-          <p>{props.name} in {spawnSecondsFromNow}s</p>
+      <div className="CountdownTimer">
+        <span>
+          {props.name} in {spawnSecondsFromNow}s
+        </span>
       </div>
     );
   } 
   return (
-    <div>
-        <p>{props.name}</p>
-        <button onClick={() => props.kill(props.index)}>Kill</button>
+    <div className="CountdownTimer">
+        <span>
+          <p>{props.name}</p>
+          <button onClick={() => props.kill(props.index)}>Kill</button>
+        </span>
     </div>
   );
 }

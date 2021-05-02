@@ -1,0 +1,9 @@
+.CountdownTimer {
+    height: 100px;
+    display:table;
+}
+
+.CountdownTimer > span {
+    display:table-cell;
+    vertical-align:middle;
+}
