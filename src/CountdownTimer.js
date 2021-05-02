@@ -24,7 +24,7 @@ export default function CountDownTimer(props) {
       <div className={`CountdownTimer ${spawnSecondsFromNow<=15?"soon":""}`}>
         <span>
           <p><b>{props.name}</b></p>
-          {spawnSecondsFromNow}
+          {spawnSecondsFromNow} <button onClick={() => props.reset(props.index)}>Reset</button> 
         </span>
       </div>
     );

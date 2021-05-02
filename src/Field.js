@@ -12,6 +12,7 @@ class Field extends React.Component {
         super(props);
         this.state = {now: Date.now(), offset: 0};
         this.kill = this.kill.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     componentDidMount() {
@@ -37,34 +38,40 @@ class Field extends React.Component {
         update[index] = firebase.database.ServerValue.TIMESTAMP;
         firebase.update(`chronos`, update);
     }
+
+    reset(index) {
+        var update = {};
+        update[index] = 0;
+        firebase.update(`chronos`, update);
+    }
       
     render() {
         return (
             <div className="field">
                 <div className="zariche">
                     <div className="inner">
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="zarpriest1"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="zarpriest1"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="zarpriest2"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="zarpriest2"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={chestRespawn} name="Zariche Chest" index="zarchest"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={chestRespawn} name="Zariche Chest" index="zarchest"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="zarpriest3"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="zarpriest3"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="zarpriest4"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="zarpriest4"></CountDownTimer>
                     </div>
                 </div>
                 <div className="akamanah">
                     <div className="inner">                    
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="akapriest1"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest1"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="akapriest2"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest2"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={chestRespawn} name="Akamanah Chest" index="akachest"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={chestRespawn} name="Akamanah Chest" index="akachest"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="akapriest3"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest3"></CountDownTimer>
                         <div></div>
-                        <CountDownTimer now={this.state.now} kill={this.kill} respawn={priestRespawn} name="Priest" index="akapriest4"></CountDownTimer>
+                        <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest4"></CountDownTimer>
                     </div>
                 </div>
             </div>
