@@ -23,7 +23,7 @@ class Field extends React.Component {
         });
         
         this.tick()
-        this.setState({timer: setInterval(this.tick.bind(this), 100)});
+        this.setState({timer: setInterval(this.tick.bind(this), 250)});
     }
 
     componentWillUnmount() {
@@ -61,6 +61,8 @@ class Field extends React.Component {
 
         var now = moment(this.state.now);
 
+        //now.add(24, "hours").add(5, "hours").add(40, "minutes");
+
         var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
         var swordsEnd = moment(now).utc().hour(2).minute(0).second(0).millisecond(0);
@@ -78,7 +80,7 @@ class Field extends React.Component {
                     </div>
                 }
                 {active &&
-                    <div className="active overlay">
+                    <div className="active">
                         <div className={`active box ${Math.floor((swordsEnd.diff(now))/1000)<30?"soon":""}`}>
                             {now.to(swordsEnd)}
                         </div>
