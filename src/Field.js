@@ -3,6 +3,7 @@ import  'firebase/database'
 import './Field.css';
 import firebase from 'firebase/app'
 import CountDownTimer from './CountdownTimer.js'
+import moment from 'moment';
 
 const chestRespawn = 360;
 const priestRespawn = 480;
@@ -22,7 +23,7 @@ class Field extends React.Component {
         });
         
         this.tick()
-        this.setState({timer: setInterval(this.tick.bind(this), 100)});
+        this.setState({timer: setInterval(this.tick.bind(this), 1000)});
     }
 
     componentWillUnmount() {
@@ -46,8 +47,36 @@ class Field extends React.Component {
     }
       
     render() {
+        var active = true;
+
+        moment.updateLocale('en', {
+            relativeTime : {
+                future: "in %s",
+                s  : '%d seconds',
+                ss : '%d seconds',
+                m:  "a minute",
+                mm: "%d minutes",
+            }
+        });
+
+        var now = moment(this.state.now);
+
+        var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
+        var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
+        var swordsEnd = moment(now).utc().hour(2).minute(0).second(0).millisecond(0);
+
+        // Swords are active Tuesday - Friday 1:30am-2am UTC.
+        if (now.utc().day() <= 1 || now.utc().day() >= 5 || !now.isBetween(swordsBegin, swordsEnd)) {
+            active = false;
+        } 
+
         return (
             <div className="field">
+                {!active &&
+                    <div className="inactiveOverlay">
+                        {now.utc().day() >= 2 && now.utc().day() <= 5 && now.isAfter(swordsBeginSoon) && now.isBefore(swordsEnd) ? 'Swords begin soon ' + now.to(swordsBegin) : 'Swords are currently inactive.' }
+                    </div>
+                }
                 <div className="zariche">
                     <div className="inner">
                         <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="zarpriest1"></CountDownTimer>
@@ -62,7 +91,7 @@ class Field extends React.Component {
                     </div>
                 </div>
                 <div className="akamanah">
-                    <div className="inner">                    
+                    <div className="inner">
                         <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest1"></CountDownTimer>
                         <div></div>
                         <CountDownTimer now={this.state.now} kill={this.kill} reset={this.reset} respawn={priestRespawn} name="Priest" index="akapriest2"></CountDownTimer>

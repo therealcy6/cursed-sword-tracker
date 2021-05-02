@@ -1,6 +1,7 @@
 import React from "react";
 import './CountdownTimer.css';
 
+import moment from 'moment';
 import { useSelector } from 'react-redux'
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
@@ -16,8 +17,9 @@ export default function CountDownTimer(props) {
     return <div>Observed Data Is Empty</div>
   }
 
-  var spawnTimestamp = chronos[props.index] + props.respawn * 1000;
-  var spawnSecondsFromNow = Math.floor((spawnTimestamp - props.now)/1000);
+  var lastDeath = moment(chronos[props.index]);
+  var nextSpawn = lastDeath.add(props.respawn, "seconds");
+  var spawnSecondsFromNow = Math.floor(nextSpawn.diff(moment())/1000);
 
   if (spawnSecondsFromNow > 0) {
     return (
