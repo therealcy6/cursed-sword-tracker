@@ -23,7 +23,8 @@ export default function CountDownTimer(props) {
     return (
       <div className={`CountdownTimer ${spawnSecondsFromNow<=15?"soon":""}`}>
         <span>
-          {props.name} in {spawnSecondsFromNow}s
+          <p><b>{props.name}</b></p>
+          {spawnSecondsFromNow}
         </span>
       </div>
     );
@@ -31,7 +32,7 @@ export default function CountDownTimer(props) {
   return (
     <div className="CountdownTimer">
         <span>
-          <p>{props.name}</p>
+          <p><b>{props.name}</b></p>
           <button onClick={() => props.kill(props.index)}>Kill</button>
         </span>
     </div>

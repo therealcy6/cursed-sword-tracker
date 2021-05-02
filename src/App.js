@@ -1,4 +1,7 @@
 import './App.css';
+import firebaselogo from './firebase.svg';
+import reduxlogo from './Redux.png';
+import reactlogo from './react.png';
 import Field from './Field.js';
 import React from 'react'
 import { Provider } from 'react-redux'
@@ -44,11 +47,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <div className="appTitle">
+          <h1>Cursed Sword Tracker</h1>
+        </div>
         <Provider store={store}>
           <ReactReduxFirebaseProvider {...rrfProps}>
             <Field></Field>
           </ReactReduxFirebaseProvider>
         </Provider>
+        <div className="appFooter">
+          <h3>Made by AlphaSix</h3>
+          <img src={reactlogo} className="App-logo" alt="logo" />
+          <img src={reduxlogo} className="App-logo" alt="logo" />
+          <img src={firebaselogo} className="App-logo" alt="logo" />
+        </div>
       </div>
     );
   }

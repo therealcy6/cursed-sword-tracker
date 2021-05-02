@@ -9,3 +9,19 @@ body {
 p {
   margin: 0;
 }
+
+.appTitle {
+  color:white;
+  font-size: 36;
+}
+
+.appFooter {
+  color:white;
+  font-size: 12;
+}
+
+.App-logo {
+  height: 30px;
+  margin: 30px;
+  pointer-events: none;
+}
