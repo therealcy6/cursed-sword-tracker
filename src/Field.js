@@ -11,7 +11,7 @@ const priestRespawn = 480;
 class Field extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {now: Date.now(), offset: 0};
+        this.state = {now: moment(), offset: 0};
         this.kill = this.kill.bind(this);
         this.reset = this.reset.bind(this);
     }
@@ -19,7 +19,7 @@ class Field extends React.Component {
     componentDidMount() {
         var offsetRef = firebase.database().ref(".info/serverTimeOffset");
         offsetRef.on("value", (snap) => {
-            this.setState({offset: snap.val(), now: Date.now() + snap.val()});
+            this.setState({offset: snap.val(), now: moment().add(snap.val(), "millisecond")});
         });
         
         this.tick()
@@ -31,7 +31,9 @@ class Field extends React.Component {
     }
     
     tick() {
-        this.setState({now: Date.now() + this.state.offset});
+        var now = moment().add(this.state.offset, "millisecond");
+        //now.add(24, "hours").add(4, "hours").add(35, "minutes");
+        this.setState({now: now});
     }
 
     kill(index) {
@@ -60,8 +62,6 @@ class Field extends React.Component {
         });
 
         var now = moment(this.state.now);
-
-       // now.add(24, "hours").add(5, "hours").add(20, "minutes");
 
         var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
