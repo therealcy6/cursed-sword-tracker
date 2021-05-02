@@ -5,7 +5,7 @@
 
 .CountdownTimer > span {
     display:table-cell;
-    vertical-align:middle;
+    padding-top: 25px;
 }
 
 .soon {
