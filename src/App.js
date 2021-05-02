@@ -57,9 +57,9 @@ class App extends React.Component {
         </Provider>
         <div className="appFooter">
           <h3>Made by AlphaSix</h3>
-          <img src={reactlogo} className="App-logo" alt="logo" />
-          <img src={reduxlogo} className="App-logo" alt="logo" />
-          <img src={firebaselogo} className="App-logo" alt="logo" />
+          <img src={reactlogo} className="appLogo" alt="logo" />
+          <img src={reduxlogo} className="appLogo" alt="logo" />
+          <img src={firebaselogo} className="appLogo" alt="logo" />
         </div>
       </div>
     );
