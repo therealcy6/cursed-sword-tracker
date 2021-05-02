@@ -51,7 +51,7 @@ class Field extends React.Component {
 
         moment.updateLocale('en', {
             relativeTime : {
-                future: "in %s",
+                future: "%s",
                 s  : '%d seconds',
                 ss : '%d seconds',
                 m:  "a minute",
@@ -60,7 +60,6 @@ class Field extends React.Component {
         });
 
         var now = moment(this.state.now);
-
         var swordsBegin = moment(now).utc().hour(1).minute(30).second(0).millisecond(0);
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
         var swordsEnd = moment(now).utc().hour(2).minute(0).second(0).millisecond(0);
@@ -73,8 +72,15 @@ class Field extends React.Component {
         return (
             <div className="field">
                 {!active &&
-                    <div className="inactiveOverlay">
-                        {now.utc().day() >= 2 && now.utc().day() <= 5 && now.isAfter(swordsBeginSoon) && now.isBefore(swordsEnd) ? 'Swords begin soon ' + now.to(swordsBegin) : 'Swords are currently inactive.' }
+                    <div className="inactive overlay">
+                        {now.utc().day() >= 2 && now.utc().day() <= 5 && now.isAfter(swordsBeginSoon) && now.isBefore(swordsEnd) ? 'Swords begin soon in ' + now.to(swordsBegin) : 'Swords are currently inactive.' }
+                    </div>
+                }
+                {active &&
+                    <div className="active overlay">
+                        <div className="active box">
+                            {now.to(swordsEnd)}
+                        </div>
                     </div>
                 }
                 <div className="zariche">
