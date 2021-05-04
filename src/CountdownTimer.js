@@ -25,7 +25,7 @@ export default function CountDownTimer(props) {
   if (spawnSecondsFromNow > 0) {
     var now = moment(props.now);
     
-    var swordsEnd = moment(now).utc().hour(2).minute(0).second(0).millisecond(0);
+    var swordsEnd = moment(now).utc().hour(1).minute(59).second(0).millisecond(0);
     var wontRespawnAfter = moment(swordsEnd).subtract(props.respawn, "second");
   
     console.log(wontRespawnAfter.format());
