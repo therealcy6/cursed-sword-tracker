@@ -6,7 +6,7 @@ import CountDownTimer from './CountdownTimer.js'
 import moment from 'moment';
 
 const chestRespawn = 360;
-const priestRespawn = 480;
+const priestRespawn = 420;
 
 class Field extends React.Component {
     constructor(props) {
@@ -67,7 +67,7 @@ class Field extends React.Component {
         var swordsBeginSoon = moment(now).utc().hour(1).minute(20).second(0).millisecond(0);
         var swordsEnd = moment(now).utc().hour(1).minute(59).second(0).millisecond(0);
         
-        // Swords are active Tuesday - Friday 1:30am-2am UTC.
+        // Swords are active Tuesday - Friday 1:30am-1:59am UTC.
         if (now.utc().day() <= 1 || now.utc().day() >= 5 || !now.isBetween(swordsBegin, swordsEnd)) {
             active = false;
         } 
